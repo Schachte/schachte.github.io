@@ -1,0 +1,59 @@
+
+# SEO settings
+title: Ryan Schachte
+description: "Motivated Software Engineer and Creator"
+keywords: "ryan, schachte, youtube, simple, engineer, hacker, programmer"
+url: http://ryan-schachte.com
+baseurl: "/simplest"
+# baseurl: null
+
+#google_analytics: UA-52446115-1
+repo: https://github.com/Schachte/schachte.github.io
+#disqus_shortname: "nandothemes"
+
+# Build settings
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : pygments
+
+paginate: 4
+paginate_path: "/page/:num/"
+comments: true
+
+source: source
+destination: _site
+
+# Sass configuration
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+# Author settings
+author:
+  name     : Ryan Schachte
+  job      : Software Engineer
+  bio      : "Motivated engineer, passionate creator, always looking for fun projects and good coffee."
+  thumb    : /images/author.jpg
+  email    : code@ryan-schachte.com
+  url      : http://ryan-schachte.com
+  github   : http://github.com/schachte
+  twitter  : http://twitter.com/anonyrun
+  linkedin : http://linkedin.com/in/schachte
+
+# social settings
+#og_locale: "pt_BR"
+#twitter_card: "summary_large_image"
+#twitter_site: "@anonyrun"
+
+gems:
+  - bourbon
+  - jekyll-paginate
+
+# navbar pages
+navbar:
+  - slug : about
+    title: About
+  - slug : blog
+    title: Blog
+
+exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
