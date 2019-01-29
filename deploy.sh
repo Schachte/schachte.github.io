@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
-echo 'Testing travis...'
-bundle exec travis-lint
+#echo 'Testing travis...'
+#bundle exec travis-lint
 
 echo 'Jekyll build...'
 bundle exec jekyll build
