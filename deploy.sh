@@ -13,11 +13,11 @@ bundle exec htmlproof ./_site --href-ignore "#","/simplest/" --disable-external
 cd ${HTML_FOLDER}
 
 # config
-git config --global user.email "nandomoreira.me@gmail.com"
-git config --global user.name "Fernando Moreira"
+git config --global user.email "code@ryan-schachte.com"
+git config --global user.name "Ryan Schachte"
 
 # deploy
 git init
 git add --all
 git commit -m "Deploy to GitHub Pages"
-git push --force --quiet "https://${GH_TOKEN}@github.com/${GH_REF}" master:gh-pages
+git push --force --quiet "https://github.com/Schachte/schachte.github.io.git" master:gh-pages
