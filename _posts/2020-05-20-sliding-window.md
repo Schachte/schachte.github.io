@@ -11,7 +11,8 @@ tags:
 comments: true # Enable Disqus comments for specific page
 ---
 
-{% youtube MK-NZ4hN7rs %}
+{% youtube http://youtu.be/MK-NZ4hN7rs %}
+
 
 
 

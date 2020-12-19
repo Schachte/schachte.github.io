@@ -15,7 +15,7 @@ comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 ---
 
-{% youtube VcLfF7TwII8 %}
+{% youtube http://youtu.be/VcLfF7TwII8 %}
 
  In this video, I dive into databases, indexes and performance. These are all very important things to know when dealing with modern web applications. 
 
