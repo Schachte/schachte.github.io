@@ -15,7 +15,7 @@ comments: true # Enable Disqus comments for specific page
 authorbox: true # Enable authorbox for specific page
 ---
 
-<div class="video"> <figure> <iframe width="640" height="480" src="//www.youtube.com/embed/VcLfF7TwII8" frameborder="0" allowfullscreen></iframe> </figure> </div>
+In this video, I dive into databases, indexes and performance. These are all very important things to know when dealing with modern web applications. 
 
- In this video, I dive into databases, indexes and performance. These are all very important things to know when dealing with modern web applications. 
+<div class="video"> <figure> <iframe width="640" height="480" src="//www.youtube.com/embed/VcLfF7TwII8" frameborder="0" allowfullscreen></iframe> </figure> </div>
 
