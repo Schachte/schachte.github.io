@@ -1,1 +1,5 @@
+---
+tags: aws
+---
+
 ## Notes For EC2 & Security Groups in AWS
