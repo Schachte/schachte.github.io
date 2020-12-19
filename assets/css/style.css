@@ -688,6 +688,7 @@ hr {
     cursor: pointer;
     border-top: 1px solid #f7f7f7;
     border-bottom: 1px solid #f7f7f7;
+    text-transform: capitalize;
 }
 
 .feed-title-excerpt-block:hover {
