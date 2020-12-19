@@ -11,7 +11,7 @@ tags:
 comments: true # Enable Disqus comments for specific page
 ---
 
-{% youtube http://youtu.be/MK-NZ4hN7rs %}
+<div class="video"> <figure> <iframe width="640" height="480" src="//www.youtube.com/embed/MK-NZ4hN7rs" frameborder="0" allowfullscreen></iframe> </figure> </div>
 
 
 
