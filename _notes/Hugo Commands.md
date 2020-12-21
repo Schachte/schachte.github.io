@@ -1,3 +1,7 @@
+---
+tags: hugo
+---
+
 # Hugo Commands
 
 Installing hugo
