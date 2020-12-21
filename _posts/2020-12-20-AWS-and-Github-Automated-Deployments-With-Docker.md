@@ -1,5 +1,3 @@
-# Automated Deployments With Github Actions, Docker and AWS
-
 # Requirements
 
 ---
@@ -109,11 +107,11 @@ Elastic Beanstalk is a fantastic orchestration service offered by AWS used for d
 
 In AWS, search for "Elastic Beanstalk" and open it up
 
-![Automated%20Deployments%20With%20Github%20Actions,%20Docker%20%20c50106dfb7734b00b888a43c0ced094a/Untitled.png](Automated%20Deployments%20With%20Github%20Actions,%20Docker%20%20c50106dfb7734b00b888a43c0ced094a/Untitled.png)
+![/assets/img/posts/Untitled.png](/assets/img/posts/Untitled.png)
 
 From here, we'll create a new application.  Select "Create New Environment"
 
-![Automated%20Deployments%20With%20Github%20Actions,%20Docker%20%20c50106dfb7734b00b888a43c0ced094a/Untitled%201.png](Automated%20Deployments%20With%20Github%20Actions,%20Docker%20%20c50106dfb7734b00b888a43c0ced094a/Untitled%201.png)
+![/assets/img/posts/Untitled%201.png](/assets/img/posts/Untitled%201.png)
 
 Type in the application name, environment, etc. If you're using Node.JS, ensure the platform is NodeJS and if Java, select Java, etc. 
 
@@ -178,4 +176,4 @@ I use timestamp and string replace commands to get a unique suffix for the zip f
 
 Once you make a new commit to master, the code will be deployed and you'll be able to access your site on the Elastic Beanstock URL seen on the AWS EB service page. 
 
-![Automated%20Deployments%20With%20Github%20Actions,%20Docker%20%20c50106dfb7734b00b888a43c0ced094a/Untitled%202.png](Automated%20Deployments%20With%20Github%20Actions,%20Docker%20%20c50106dfb7734b00b888a43c0ced094a/Untitled%202.png)
+![/assets/img/posts/Untitled%202.png](/assets/img/posts/Untitled%202.png)
