@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Mypost2</title>
+      <title>Useful Hugo Commands</title>
       <link>https://schachte.github.io/2020/12/21/hugo_cmd/</link>
       <pubDate>Mon, 21 Dec 2020 20:22:24 -0700</pubDate>
       
@@ -28,15 +28,6 @@ hugo server Adding submodule to public directory
     </item>
     
     <item>
-      <title>Mypost2</title>
-      <link>https://schachte.github.io/2020/12/21/mypost2/</link>
-      <pubDate>Mon, 21 Dec 2020 20:22:24 -0700</pubDate>
-      
-      <guid>https://schachte.github.io/2020/12/21/mypost2/</guid>
-      <description>test</description>
-    </item>
-    
-    <item>
       <title>Burning Subtitles Into Video Files with FFMPEG</title>
       <link>https://schachte.github.io/2020/12/21/2020-12-21-burning-subtitles-into-vids/</link>
       <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
@@ -44,6 +35,15 @@ hugo server Adding submodule to public directory
       <guid>https://schachte.github.io/2020/12/21/2020-12-21-burning-subtitles-into-vids/</guid>
       <description>There are several recommendations for burning subtitles into video files on different operating systems such as Handbrake and VLC. Unfortunately, these programs fall short when offering customizability such as positioning and size, transformations and edits.
 Aegisub and FFMPEG combined together can help achieve this with ease in less than 5 minutes. This article will walk through how to set that up and get started burning subtitles into your video files.</description>
+    </item>
+    
+    <item>
+      <title>Automated Deployments With Docker, Elastic Beanstalk and Github Actions</title>
+      <link>https://schachte.github.io/2020/12/20/2020-12-20-aws-and-github-automated-deployments-with-docker/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/2020/12/20/2020-12-20-aws-and-github-automated-deployments-with-docker/</guid>
+      <description>Requirements  NodeJS (https://nodejs.org) - If you decide to follow-along  Generate A Sample Application To Deploy  We are going to be auto-generating a &amp;ldquo;dummy&amp;rdquo; application to represent what we want to host. For this use-case, we will be using create-react-app. This is not required, as is simply just a simple use-case for generating a dummy application with unit tests. Feel free to use something like Java, Ruby, etc. If that is your language of choice.</description>
     </item>
     
     <item>
@@ -62,15 +62,6 @@ Aegisub and FFMPEG combined together can help achieve this with ease in less tha
       
       <guid>https://schachte.github.io/2019/06/23/2020-05-20-sliding-window/</guid>
       <description>Let&amp;rsquo;s dive into the thought process and mental models of Sliding Window, a popular algorithmic method for optimizing your code!</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://schachte.github.io/1/01/01/2020-12-20-aws-and-github-automated-deployments-with-docker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://schachte.github.io/1/01/01/2020-12-20-aws-and-github-automated-deployments-with-docker/</guid>
-      <description>Requirements   NodeJS (https://nodejs.org) - If you decide to follow-along  Generate A Sample Application To Deploy  We are going to be auto-generating a &amp;ldquo;dummy&amp;rdquo; application to represent what we want to host. For this use-case, we will be using create-react-app. This is not required, as is simply just a simple use-case for generating a dummy application with unit tests. Feel free to use something like Java, Ruby, etc.</description>
     </item>
     
   </channel>

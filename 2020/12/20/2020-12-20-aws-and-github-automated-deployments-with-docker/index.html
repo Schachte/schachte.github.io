@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Automated Deployments With Docker, Elastic Beanstalk and Github Actions &middot; Ryan Schachte</title>
+        <meta name="description" content="Requirements  NodeJS (https://nodejs.org) - If you decide to follow-along  Generate A Sample Application To Deploy  We are going to be auto-generating a &ldquo;dummy&rdquo; application to represent what we want to host. For this use-case, we will be using create-react-app. This is not required, as is simply just a simple use-case for generating a dummy application with unit tests. Feel free to use something like Java, Ruby, etc. If that is your language of choice.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.64.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Automated Deployments With Docker, Elastic Beanstalk and Github Actions">
+<meta property="og:description" content="Requirements  NodeJS (https://nodejs.org) - If you decide to follow-along  Generate A Sample Application To Deploy  We are going to be auto-generating a &ldquo;dummy&rdquo; application to represent what we want to host. For this use-case, we will be using create-react-app. This is not required, as is simply just a simple use-case for generating a dummy application with unit tests. Feel free to use something like Java, Ruby, etc. If that is your language of choice.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://schachte.github.io/2020/12/20/2020-12-20-aws-and-github-automated-deployments-with-docker/">
+        <link rel="stylesheet" href="https://schachte.github.io/dist/site.css">
+        <link rel="stylesheet" href="https://schachte.github.io/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://schachte.github.io/">Schachte&#39;s Blog</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/thesimpengineer" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/schachte" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/schachte/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:code@ryan-schachte.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/about/">About</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Automated Deployments With Docker, Elastic Beanstalk and Github Actions</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2020-12-20" itemprop="datePublished">Sun, Dec 20, 2020</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Ryan Schachte</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 3 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <h1 id="requirements">Requirements</h1>
+<ul>
+<li>NodeJS (<a href="https://nodejs.org">https://nodejs.org</a>) - If you decide to follow-along</li>
+</ul>
+<h1 id="generate-a-sample-application-to-deploy">Generate A Sample Application To Deploy</h1>
+<hr>
+<p>We are going to be auto-generating a &ldquo;dummy&rdquo; application to represent what we want to host. For this use-case, we will be using <code>create-react-app</code>. This is <em>not</em> required, as is simply just a simple use-case for generating a dummy application with unit tests. Feel free to use something like Java, Ruby, etc. If that is your language of choice.</p>
+<p>In your <strong>Terminal</strong>, execute the following commands.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ npx create-react-app my-sample-application
+</code></pre></div><h1 id="creating-a-dockerfile-for-development">Creating A Dockerfile For Development</h1>
+<hr>
+<p>It&rsquo;s good practice to separate development and production Docker. This will allow you to easily iterate locally within a Docker-based environment. When you want to go prod, the pipeline will reference the production-based Dockerfile.</p>
+<p><strong>Dockerfile.development</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-docker" data-lang="docker"><span class="k">FROM</span><span class="s"> node:alpine</span><span class="err">
+</span><span class="err"></span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> &#39;/app&#39;</span><span class="err">
+</span><span class="err"></span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> package.json .<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span><span class="err"></span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span><span class="err"></span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;npm&#34;</span><span class="p">,</span> <span class="s2">&#34;run&#34;</span><span class="p">,</span> <span class="s2">&#34;start&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></div><p><strong>docker-compose-dev.yml</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-docker" data-lang="docker">version: <span class="s1">&#39;3&#39;</span><span class="err">
+</span><span class="err"></span>services:<span class="err">
+</span><span class="err"></span>  web:<span class="err">
+</span><span class="err"></span>    stdin_open: true<span class="err">
+</span><span class="err"></span>    build:<span class="err">
+</span><span class="err"></span>      context: .<span class="err">
+</span><span class="err"></span>      dockerfile: Dockerfile.development<span class="err">
+</span><span class="err"></span>    ports:<span class="err">
+</span><span class="err"></span>      - <span class="s1">&#39;3000:3000&#39;</span><span class="err">
+</span><span class="err"></span>    volumes:<span class="err">
+</span><span class="err"></span>      - /app/node_modules<span class="err">
+</span><span class="err"></span>      - .:/app<span class="err">
+</span></code></pre></div><p>Now, whenever we want to run our development environment, we can simply execute the following:</p>
+<p><code>docker-compose -f docker-compose-dev.yml up</code></p>
+<p>Because we mounted the files into the container from our host machine, any changes done locally will automatically be reflected in the container.  This is useful for quick development.</p>
+<h1 id="creating-a-dockerfile-for-production">Creating A Dockerfile For Production</h1>
+<hr>
+<p>Production environments typically have a different setup than dev. We want <em>minified</em> assets and want to remove some of the bloat we&rsquo;d get with the standard development server.</p>
+<ol>
+<li>Add the commands to get the static assets from building the static files</li>
+<li>Use Nginx to host these static assets from within the container</li>
+</ol>
+<p><strong>Dockerfile</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-docker" data-lang="docker"><span class="k">FROM</span><span class="s"> node:alpine</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> &#39;/app&#39;</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> npm install<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> npm run build<span class="err">
+</span><span class="err"></span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> nginx</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span><span class="m">0</span> /app/build /usr/share/nginx/html<span class="err">
+</span></code></pre></div><p><strong>docker-compose.yml</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-docker" data-lang="docker">version: <span class="s1">&#39;3&#39;</span><span class="err">
+</span><span class="err"></span>services:<span class="err">
+</span><span class="err"></span>  web:<span class="err">
+</span><span class="err"></span>    stdin_open: true<span class="err">
+</span><span class="err"></span>    build:<span class="err">
+</span><span class="err"></span>      context: .<span class="err">
+</span><span class="err"></span>      dockerfile: Dockerfile<span class="err">
+</span><span class="err"></span>    ports:<span class="err">
+</span><span class="err"></span>      - <span class="s1">&#39;80:80&#39;</span><span class="err">
+</span></code></pre></div><h1 id="generating-an-elastic-beanstalk-application--environment">Generating An Elastic Beanstalk Application &amp; Environment</h1>
+<hr>
+<p>Elastic Beanstalk is a fantastic orchestration service offered by AWS used for deploying applications into AWS. Beanstalk will easily handle elastic load balancers and auto-scaling for you and can also reference docker files to spin up applications automatically. This is what we&rsquo;ll do in this section.</p>
+<h3 id="create-an-environment">Create An Environment</h3>
+<p>In AWS, search for &ldquo;Elastic Beanstalk&rdquo; and open it up</p>
+<p><img src="/assets/img/posts/Untitled.png" alt="/assets/img/posts/Untitled.png"></p>
+<p>From here, we&rsquo;ll create a new application.  Select &ldquo;Create New Environment&rdquo;</p>
+<p><img src="/assets/img/posts/Untitled%201.png" alt="/assets/img/posts/Untitled%201.png"></p>
+<p>Type in the application name, environment, etc. If you&rsquo;re using Node.JS, ensure the platform is NodeJS and if Java, select Java, etc.</p>
+<p>This process will take 5-10 minutes to complete fully once you select Create Environment.</p>
+<h1 id="connecting-github-to-aws">Connecting GitHub to AWS</h1>
+<hr>
+<p>We want to ensure the flow from Github merge → AWS is automated. That is, once we merge new code into the main branch, how can we automate the new code deployments to our cloud server?</p>
+<ol>
+<li>Add secrets into your GitHub account
+<ol>
+<li>The secrets will match the access key and secret when creating a new IAM user</li>
+</ol>
+</li>
+</ol>
+<h3 id="creating-a-new-github-action">Creating A New GitHub Action</h3>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">name</span><span class="p">:</span><span class="w"> </span>Test<span class="w"> </span>&amp;<span class="w"> </span>Deploy<span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">  </span><span class="k">push</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">branches</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">      </span>- master<span class="w">
+</span><span class="w"></span><span class="k">jobs</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">  </span><span class="k">test-and-deploy</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">runs-on</span><span class="p">:</span><span class="w"> </span>ubuntu-latest<span class="w">
+</span><span class="w">    </span><span class="k">steps</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">      </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Checkout<span class="w"> </span>Latest<span class="w"> </span>Repo<span class="w">
+</span><span class="w">        </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>actions/checkout@master<span class="w">
+</span><span class="w">
+</span><span class="w">      </span><span class="c"># Zip Dockerfile for upload</span><span class="w">
+</span><span class="w">      </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Generate<span class="w"> </span>Deployment<span class="w"> </span>Package<span class="w">
+</span><span class="w">        </span><span class="k">run</span><span class="p">:</span><span class="w"> </span>zip<span class="w"> </span>-r<span class="w"> </span>deploy.zip<span class="w"> </span>*<span class="w"> </span>-x<span class="w"> </span><span class="s2">&#34;**node_modules**&#34;</span><span class="w">
+</span><span class="w">        
+</span><span class="w">      </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Get<span class="w"> </span>timestamp<span class="w">
+</span><span class="w">        </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>gerred/actions/current-time@master<span class="w">
+</span><span class="w">        </span><span class="k">id</span><span class="p">:</span><span class="w"> </span>current-time<span class="w">
+</span><span class="w">
+</span><span class="w">      </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Run<span class="w"> </span>string<span class="w"> </span>replace<span class="w">
+</span><span class="w">        </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>frabert/replace-string-action@master<span class="w">
+</span><span class="w">        </span><span class="k">id</span><span class="p">:</span><span class="w"> </span>format-time<span class="w">
+</span><span class="w">        </span><span class="k">with</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">          </span><span class="k">pattern</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;[:\.]+&#39;</span><span class="w">
+</span><span class="w">          </span><span class="k">string</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;${{ steps.current-time.outputs.time }}&#34;</span><span class="w">
+</span><span class="w">          </span><span class="k">replace-with</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="w">
+</span><span class="w">          </span><span class="k">flags</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;g&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w">      </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Deploy<span class="w"> </span>to<span class="w"> </span>EB<span class="w">
+</span><span class="w">        </span><span class="k">uses</span><span class="p">:</span><span class="w"> </span>einaregilsson/beanstalk-deploy@v14<span class="w">
+</span><span class="w">        </span><span class="k">with</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="w">          </span><span class="k">aws_access_key</span><span class="p">:</span><span class="w"> </span>${{<span class="w"> </span>secrets.AWS_ACCESS_KEY_ID<span class="w"> </span>}}<span class="w">
+</span><span class="w">          </span><span class="k">aws_secret_key</span><span class="p">:</span><span class="w"> </span>${{<span class="w"> </span>secrets.AWS_SECRET_ACCESS_KEY<span class="w"> </span>}}<span class="w">
+</span><span class="w">          </span><span class="k">application_name</span><span class="p">:</span><span class="w"> </span>beanstalk-engineer-v2<span class="w">
+</span><span class="w">          </span><span class="k">environment_name</span><span class="p">:</span><span class="w"> </span>BeanstalkEngineerV2-env<span class="w">
+</span><span class="w">          </span><span class="k">version_label</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;the-simple-engineer-deployment-${{ steps.format-time.outputs.replaced }}&#34;</span><span class="w">
+</span><span class="w">          </span><span class="k">region</span><span class="p">:</span><span class="w"> </span>us-east<span class="m">-2</span><span class="w">
+</span><span class="w">          </span><span class="k">deployment_package</span><span class="p">:</span><span class="w"> </span>deploy.zip<span class="w">
+</span></code></pre></div><p>The above wil generate a zip file from the contents (except for node_modules) and this is what will be uploaded into S3 under the EB environment. EB for single container deployments will scan for the docker-compose file and build the image for you and deploy.</p>
+<p>I use timestamp and string replace commands to get a unique suffix for the zip file I upload into S3. The S3 upload is automated in EB.</p>
+<p>Once you make a new commit to master, the code will be deployed and you&rsquo;ll be able to access your site on the Elastic Beanstock URL seen on the AWS EB service page.</p>
+<p><img src="/assets/img/posts/Untitled%202.png" alt="/assets/img/posts/Untitled%202.png"></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/aws/">AWS</a>, 
+                <a href="/tags/docker/">Docker</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=Automated%20Deployments%20With%20Docker%2c%20Elastic%20Beanstalk%20and%20Github%20Actions&url=https%3a%2f%2fschachte.github.io%2f2020%2f12%2f20%2f2020-12-20-aws-and-github-automated-deployments-with-docker%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Automated%20Deployments%20With%20Docker%2c%20Elastic%20Beanstalk%20and%20Github%20Actions&url=https%3a%2f%2fschachte.github.io%2f2020%2f12%2f20%2f2020-12-20-aws-and-github-automated-deployments-with-docker%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://schachte.github.io/">Schachte&#39;s Blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2020 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://schachte.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://schachte.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://schachte.github.io/js/scripts.js"></script>
+    </body>
+</html>
+
