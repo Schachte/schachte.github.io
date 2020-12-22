@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithms on Schachte&#39;s Blog</title>
+    <link>https://schachte.github.io/tags/algorithms/</link>
+    <description>Recent content in algorithms on Schachte&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Ryan Schachte</copyright>
+    <lastBuildDate>Sun, 23 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://schachte.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sliding Window - Algorithmic Mental Models</title>
+      <link>https://schachte.github.io/2019/06/23/2020-05-20-sliding-window/</link>
+      <pubDate>Sun, 23 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/2019/06/23/2020-05-20-sliding-window/</guid>
+      <description>Let&amp;rsquo;s dive into the thought process and mental models of Sliding Window, a popular algorithmic method for optimizing your code!</description>
+    </item>
+    
+  </channel>
+</rss>

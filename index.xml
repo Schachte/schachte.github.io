@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Schachte&#39;s Blog</title>
+    <link>https://schachte.github.io/</link>
+    <description>Recent content on Schachte&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Ryan Schachte</copyright>
+    <lastBuildDate>Mon, 21 Dec 2020 20:22:24 -0700</lastBuildDate>
+    
+	<atom:link href="https://schachte.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mypost2</title>
+      <link>https://schachte.github.io/2020/12/21/hugo_cmd/</link>
+      <pubDate>Mon, 21 Dec 2020 20:22:24 -0700</pubDate>
+      
+      <guid>https://schachte.github.io/2020/12/21/hugo_cmd/</guid>
+      <description>Hugo Commands Installing hugo
+brew install hugo New site
+hugo new site mysite Building the code
+hugo server -t your-theme Viewing the site locally
+hugo server Adding submodule to public directory
+ Make sure you have at least one commit on the main branch on the target repo before running this  git submodule add -b main YOUR_REPO_URL.git public Creating a deployment script
+#!/bin/sh  # If a command fails then the deploy stops set -e printf &amp;#34;\033[0;32mDeploying updates to GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Mypost2</title>
+      <link>https://schachte.github.io/2020/12/21/mypost2/</link>
+      <pubDate>Mon, 21 Dec 2020 20:22:24 -0700</pubDate>
+      
+      <guid>https://schachte.github.io/2020/12/21/mypost2/</guid>
+      <description>test</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://schachte.github.io/about/</link>
+      <pubDate>Mon, 21 Dec 2020 20:14:29 -0700</pubDate>
+      
+      <guid>https://schachte.github.io/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Burning Subtitles Into Video Files with FFMPEG</title>
+      <link>https://schachte.github.io/2020/12/21/2020-12-21-burning-subtitles-into-vids/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/2020/12/21/2020-12-21-burning-subtitles-into-vids/</guid>
+      <description>There are several recommendations for burning subtitles into video files on different operating systems such as Handbrake and VLC. Unfortunately, these programs fall short when offering customizability such as positioning and size, transformations and edits.
+Aegisub and FFMPEG combined together can help achieve this with ease in less than 5 minutes. This article will walk through how to set that up and get started burning subtitles into your video files.</description>
+    </item>
+    
+    <item>
+      <title>Database Indexes &amp; Performance Simplified</title>
+      <link>https://schachte.github.io/2020/07/26/2020-06-01-databases/</link>
+      <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/2020/07/26/2020-06-01-databases/</guid>
+      <description>In this video, I dive into databases, indexes and performance. These are all very important things to know when dealing with modern web applications.</description>
+    </item>
+    
+    <item>
+      <title>Sliding Window - Algorithmic Mental Models</title>
+      <link>https://schachte.github.io/2019/06/23/2020-05-20-sliding-window/</link>
+      <pubDate>Sun, 23 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/2019/06/23/2020-05-20-sliding-window/</guid>
+      <description>Let&amp;rsquo;s dive into the thought process and mental models of Sliding Window, a popular algorithmic method for optimizing your code!</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://schachte.github.io/1/01/01/2020-12-20-aws-and-github-automated-deployments-with-docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/1/01/01/2020-12-20-aws-and-github-automated-deployments-with-docker/</guid>
+      <description>Requirements   NodeJS (https://nodejs.org) - If you decide to follow-along  Generate A Sample Application To Deploy  We are going to be auto-generating a &amp;ldquo;dummy&amp;rdquo; application to represent what we want to host. For this use-case, we will be using create-react-app. This is not required, as is simply just a simple use-case for generating a dummy application with unit tests. Feel free to use something like Java, Ruby, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

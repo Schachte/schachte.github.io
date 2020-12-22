@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://schachte.github.io/2020/12/21/hugo_cmd/</loc>
+    <lastmod>2020-12-21T20:22:24-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/2020/12/21/mypost2/</loc>
+    <lastmod>2020-12-21T20:22:24-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/post/</loc>
+    <lastmod>2020-12-21T20:22:24-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/</loc>
+    <lastmod>2020-12-21T20:22:24-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/about/</loc>
+    <lastmod>2020-12-21T20:14:29-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/2020/12/21/2020-12-21-burning-subtitles-into-vids/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/data/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/</loc>
+    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/2020/07/26/2020-06-01-databases/</loc>
+    <lastmod>2020-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/databases/</loc>
+    <lastmod>2020-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/mysql/</loc>
+    <lastmod>2020-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/rdbms/</loc>
+    <lastmod>2020-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/algorithms/</loc>
+    <lastmod>2019-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/tags/mental-models/</loc>
+    <lastmod>2019-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/2019/06/23/2020-05-20-sliding-window/</loc>
+    <lastmod>2019-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schachte.github.io/1/01/01/2020-12-20-aws-and-github-automated-deployments-with-docker/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

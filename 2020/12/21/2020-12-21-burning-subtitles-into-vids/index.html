@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Burning Subtitles Into Video Files with FFMPEG &middot; Ryan Schachte</title>
+        <meta name="description" content="There are several recommendations for burning subtitles into video files on different operating systems such as Handbrake and VLC. Unfortunately, these programs fall short when offering customizability such as positioning and size, transformations and edits.
+Aegisub and FFMPEG combined together can help achieve this with ease in less than 5 minutes. This article will walk through how to set that up and get started burning subtitles into your video files.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.64.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Burning Subtitles Into Video Files with FFMPEG">
+<meta property="og:description" content="There are several recommendations for burning subtitles into video files on different operating systems such as Handbrake and VLC. Unfortunately, these programs fall short when offering customizability such as positioning and size, transformations and edits.
+Aegisub and FFMPEG combined together can help achieve this with ease in less than 5 minutes. This article will walk through how to set that up and get started burning subtitles into your video files.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://schachte.github.io/2020/12/21/2020-12-21-burning-subtitles-into-vids/">
+        <link rel="stylesheet" href="https://schachte.github.iodist/site.css">
+        <link rel="stylesheet" href="https://schachte.github.iodist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://schachte.github.io">Schachte&#39;s Blog</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/thesimpengineer" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/schachte" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/schachte/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:code@ryan-schachte.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/about/">About</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Burning Subtitles Into Video Files with FFMPEG</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2020-12-21" itemprop="datePublished">Mon, Dec 21, 2020</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Ryan Schachte</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 3 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p>There are several recommendations for burning subtitles into video files on different operating systems such as Handbrake and VLC. Unfortunately, these programs fall short when offering customizability such as positioning and size, transformations and edits.</p>
+<p>Aegisub and FFMPEG combined together can help achieve this with ease in less than 5 minutes. This article will walk through how to set that up and get started burning subtitles into your video files.</p>
+<h1 id="installation--setup">Installation &amp; Setup</h1>
+<h3 id="ffmpeg-installation">FFMPEG Installation</h3>
+<p>The first thing you&rsquo;ll need to do is install <code>FFMPEG</code>. In order to do this, you can either visit their documentation on installation <a href="https://ffmpeg.org/download.html">https://ffmpeg.org/download.html</a> or you can install via Homebrew like so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">brew install ffmpeg
+</code></pre></div><h3 id="aegisub-installation">Aegisub Installation</h3>
+<p>Aegisub is a free, open-source solution for SRT edits. When editing and saving modified SRT files, we will output what is known as a <code>.ass</code> file, standing for Advanced Subtation Alpha. These files are similar to a standard subtitle file like SRT, but they don&rsquo;t require libavcodec and livavformat installations to be present.</p>
+<p>You get additional benefits with <code>.ass</code> files like</p>
+<ul>
+<li>Custom shaping engine
+<ul>
+<li>auto libass shaping engine</li>
+<li>simple font-agnostic shaper</li>
+<li>complex shaper utilizing OpenType for substitutions and positioning</li>
+</ul>
+</li>
+<li>Orientation modification</li>
+<li>Encoding modifications</li>
+<li>Stylistic modifications</li>
+</ul>
+<p>Cross platforms installers are available here: <a href="http://www.aegisub.org/downloads/">http://www.aegisub.org/downloads/</a></p>
+<h3 id="sample-ass-snippet">Sample .ass Snippet</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>Script Info<span class="o">]</span>
+<span class="p">;</span> Script generated by Aegisub 3.2.2
+<span class="p">;</span> http://www.aegisub.org/
+Title: Default Aegisub file
+ScriptType: v4.00+
+WrapStyle: <span class="m">0</span>
+ScaledBorderAndShadow: yes
+YCbCr Matrix: None
+
+<span class="o">[</span>Aegisub Project Garbage<span class="o">]</span>
+Scroll Position: <span class="m">9</span>
+Active Line: <span class="m">45</span>
+Video Position: <span class="m">14275</span>
+
+<span class="o">[</span>V4+ Styles<span class="o">]</span>
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,20,<span class="p">&amp;</span>H00FFFFFF,<span class="p">&amp;</span>H000000FF,<span class="p">&amp;</span>H00000000,<span class="p">&amp;</span>H00000000,0,0,0,0,100,100,0,0,1,2,2,2,10,10,10,1
+
+<span class="o">[</span>Events<span class="o">]</span>
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:19.98,0:00:24.96,Default,,0,0,0,,<span class="o">{</span><span class="se">\f</span>scx73<span class="se">\f</span>scy65<span class="se">\p</span>os<span class="o">(</span>191.289,282.693<span class="o">)</span>
+</code></pre></div><p>You&rsquo;ll notice the metadata embedded in the file encodes some of the stylistic information we want to bind into the .mp4 file.</p>
+<h1 id="adjusting-the-video--subtitles-together">Adjusting The Video &amp; Subtitles Together</h1>
+<ol>
+<li>The first step is to modify the subtitles to look and feel great within your video. In order to do this, open <code>Aegisub</code> and load the <code>.srt</code> file by going to File → Open Subtitles.</li>
+<li>The next step is to load the video. This can be done by going Video → Open Video</li>
+</ol>
+<p>Now, you have the flexibility of modifiying the look and feel of the text/subtitles loaded onto the video file.</p>
+<p>Below shows some of the side-bar utilities we can use to modify the orientation, scale and x-y positioning of the loaded subtitles. <code>ctrl/cmd + a</code> will allow you to modify all the subtitle lines in one go.</p>
+<p><img src="/assets/img/posts/sub.png" alt="/assets/img/posts/sub.png"></p>
+<h3 id="exporting-subtitle-from-aegisub">Exporting Subtitle From Aegisub</h3>
+<p>When you&rsquo;re satisfied with the modifications, export the SRT modifications as an <code>ass</code> file.</p>
+<p>File → Save Subtitles As &hellip;</p>
+<h1 id="burning-subtitles-into-video-file-via-ffmpeg">Burning Subtitles Into Video File Via FFMPEG</h1>
+<p>After FFMPEG is installed, we can simply burn the ASS file into the video.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ffmpeg -i input_video.mp4 -vf <span class="s2">&#34;ass=YOUR_SUBTITLE.ass&#34;</span> output_video.mp4
+</code></pre></div>
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/data/">data</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=Burning%20Subtitles%20Into%20Video%20Files%20with%20FFMPEG&url=https%3a%2f%2fschachte.github.io%2f2020%2f12%2f21%2f2020-12-21-burning-subtitles-into-vids%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Burning%20Subtitles%20Into%20Video%20Files%20with%20FFMPEG&url=https%3a%2f%2fschachte.github.io%2f2020%2f12%2f21%2f2020-12-21-burning-subtitles-into-vids%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://schachte.github.io">Schachte&#39;s Blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2020 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://schachte.github.iojs/jquery-1.11.3.min.js"></script>
+        <script src="https://schachte.github.iojs/jquery.fitvids.js"></script>
+        <script src="https://schachte.github.iojs/scripts.js"></script>
+    </body>
+</html>
+

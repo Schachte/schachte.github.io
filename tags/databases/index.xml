@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>databases on Schachte&#39;s Blog</title>
+    <link>https://schachte.github.io/tags/databases/</link>
+    <description>Recent content in databases on Schachte&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Ryan Schachte</copyright>
+    <lastBuildDate>Sun, 26 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://schachte.github.io/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Database Indexes &amp; Performance Simplified</title>
+      <link>https://schachte.github.io/2020/07/26/2020-06-01-databases/</link>
+      <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://schachte.github.io/2020/07/26/2020-06-01-databases/</guid>
+      <description>In this video, I dive into databases, indexes and performance. These are all very important things to know when dealing with modern web applications.</description>
+    </item>
+    
+  </channel>
+</rss>
